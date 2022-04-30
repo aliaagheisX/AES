@@ -1,0 +1,9 @@
+db/
+output_files/
+work/
+*.bak
+*.mti
+*.mpf
+*.qsf
+*.qws
+*.wlf
