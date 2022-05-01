@@ -21,7 +21,7 @@ always @ (posedge clk) begin
         carry = (a1 & 8'b1000_0000);          //check if LSB is 1
 
         a1 = a1 << 1;
-        if(carry == 8'b1000_0000) a1 = a1 ^ 8'b00011011;
+        if(carry == 8'b1000_0000) a1 = a1 ^ 8'b00011011; //subtract if there's carry
     end
 
 end
