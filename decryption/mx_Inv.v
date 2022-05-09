@@ -30,9 +30,9 @@ mutli mg3(clk, 8'h09, data_in[7-:8], g3);
 
 
 always @ (posedge clk) begin
-     data_out[31-:8] = e0 ^ b1 ^ d2 ^ g3;
-     data_out[23-:8] = g0 ^ e1 ^ b2 ^ d3;
-     data_out[15-:8] = d0 ^ g1 ^ e2 ^ b3;
-     data_out[7-:8]  = b0 ^ d1 ^ g2 ^ e3;
+     data_out[31-:8] <= e0 ^ b1 ^ d2 ^ g3;
+     data_out[23-:8] <= g0 ^ e1 ^ b2 ^ d3;
+     data_out[15-:8] <= d0 ^ g1 ^ e2 ^ b3;
+     data_out[7-:8]  <= b0 ^ d1 ^ g2 ^ e3;
 end
 endmodule
