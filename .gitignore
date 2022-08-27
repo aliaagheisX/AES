@@ -1,6 +1,9 @@
 db/
 output_files/
 work/
+simulation/
+incremental_db/
+.vscode/
 *.bak
 *.mti
 *.mpf

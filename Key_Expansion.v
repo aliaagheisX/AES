@@ -1,7 +1,6 @@
 module Key_Expansion #(parameter Nk = 4) (
-    clk,key,out
+    key,out
 );
-input clk;
 localparam Nr = Nk+6;
 localparam keylen = Nk*32;
 //total number of out words Nr*4
@@ -9,7 +8,7 @@ input [keylen-1:0] key;
 reg [14:0] temp;
 wire [31:0] subword [0:4*Nr+3];
 /* output reg [31:0] out[0:4*Nr+3]; */
-output reg [(4*Nr+4) * 32 - 1:0] out;
+output wire [(4*Nr+4) * 32 - 1:0] out;//
 
 wire [31:0] out_words[0:4*Nr+3];
 
@@ -35,17 +34,9 @@ generate
                 assign out_words[i] = out_words[i-Nk] ^ out_words[i-1];
             end
         end
+        assign out[(4*Nr+4) * 32 - 1 - 32*i  -:32] = out_words[i];
     end
 endgenerate 
-generate 
-integer m;
-always @(posedge clk) begin
-    for(m = 0;m <=4*Nr+3;m=m+1)begin : generate_block_loop
-        out[(4*Nr+4) * 32 - 1 - 32*m  -:32] = out_words[m];
-    end
-end
-endgenerate 
-
 
 function [31:0] RotWord;
     input [31:0] word;

@@ -1,5 +1,4 @@
-module mutli(clk,a,b,out);
-input clk;
+module mutli(a,b,out);
 input [7:0] a;
 input [7:0] b;
 output reg [7:0] out;
@@ -9,7 +8,7 @@ reg [7:0] carry;
 
 integer i;
 
-always @ (posedge clk) begin
+always @ (*) begin
     out = 8'b0;
     a1 = a;
     b1 = b;
